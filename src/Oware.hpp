@@ -25,8 +25,9 @@ namespace oware {
         /// \param hole the hole to select from and start moving
         /// \return  the vector of holes affected during the move
         std::vector<Hole> move(Hole hole) {
-            if (hole.getX() > 5 || hole.getY() > 5) { return {}; }
             auto curSeed = getSeedsAt(hole);
+            if (curSeed<=0 || !hole.isValid()) { return {}; }
+
             setSeedsAt(hole, 0);
             std::vector<Hole> affectedHoles;
             for (uint8_t n = 1; n <= curSeed; n++) {

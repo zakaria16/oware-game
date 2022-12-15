@@ -2,6 +2,6 @@
 
 ## TODO
 
-| Date      | To be done                                        | done |
-|-----------|---------------------------------------------------|------|
-| 14-dec-22 | for oware::move if seed present is zero dont move | no   |
+| Date      | To be done                                           | fixed |
+|-----------|------------------------------------------------------|-------|
+| 14-dec-22 | ~~for oware::move if seed present is zero dont sow~~ | yes   |
