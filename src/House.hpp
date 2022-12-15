@@ -2,8 +2,8 @@
 // Created by Zakaria on 14/12/2022.
 //
 
-#ifndef OWARE_HOLE_HPP
-#define OWARE_HOLE_HPP
+#ifndef OWARE_HOUSE_HPP
+#define OWARE_HOUSE_HPP
 
 #include <cstdint>
 #include <ostream>
@@ -12,18 +12,18 @@ namespace oware {
     /// A hole class for oware
     /// There are 12 holes in a given oware game
     ///  Arranged in 2 rows and 6 columns
-    class Hole {
+    class House {
 
     public:
         static constexpr uint8_t COL_COUNT = 6;
         static constexpr uint8_t ROW_COUNT = 2;
 
-        Hole() = default;
+        House() = default;
 
         /// Create a hole object
         /// \param x the row number
         /// \param y the column number
-        Hole(uint8_t x, uint8_t y) : x(x), y(y) {}
+        House(uint8_t x, uint8_t y) : x(x), y(y) {}
 
         /// Get the index of the hole
         /// \return the index
@@ -32,23 +32,23 @@ namespace oware {
         /// generate a hole from a given index
         /// \param index the index
         /// \return
-        static Hole getHoleFromIndex(uint8_t index);
+        static House getHoleFromIndex(uint8_t index);
 
         /// ouput the hole cordinate in string
         /// \param os
         /// \param hole
         /// \return
-        friend std::ostream &operator<<(std::ostream &os, const Hole &hole) {
+        friend std::ostream &operator<<(std::ostream &os, const House &hole) {
             os << "{" << static_cast<int>(hole.x) << "," << static_cast<int>(hole.y) << "}";
             return os;
         }
 
-        bool operator==(const Hole &rhs) const {
+        bool operator==(const House &rhs) const {
             return x == rhs.x &&
                    y == rhs.y;
         }
 
-        bool operator!=(const Hole &rhs) const {
+        bool operator!=(const House &rhs) const {
             return !(rhs == *this);
         }
 
@@ -64,12 +64,12 @@ namespace oware {
             return y;
         }
 
-        Hole operator++(int) {
+        House operator++(int) {
             operator++();
             return *this;
         }
 
-        Hole &operator++() {
+        House &operator++() {
             const auto nextIndex = getIndex();
             if (nextIndex == 0) {
                 x = 1;
@@ -89,4 +89,4 @@ namespace oware {
     };
 }// namespace oware
 
-#endif//OWARE_HOLE_HPP
+#endif//OWARE_HOUSE_HPP

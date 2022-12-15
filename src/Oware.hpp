@@ -8,7 +8,7 @@
 #include <algorithm>
 #include <sstream>
 
-#include "Hole.hpp"
+#include "House.hpp"
 
 namespace oware {
 
@@ -16,37 +16,37 @@ namespace oware {
     public:
         using BoardType = std::array<std::array<uint8_t, 6>, 2>;
 
-        void addSeedsAt(const Hole &hole, const int val) {
-            auto &seed = board[hole.getX()][hole.getY()];
+        void addSeedsAt(const House &house, const int val) {
+            auto &seed = board[house.getX()][house.getY()];
             seed += val;
         }
 
-        /// select the seed in a given hole and move them one by clockwise till seeds finish
-        /// \param hole the hole to select from and start moving
-        /// \return  the vector of holes affected during the move
-        std::vector<Hole> move(Hole hole) {
-            auto curSeed = getSeedsAt(hole);
-            if (curSeed<=0 || !hole.isValid()) { return {}; }
+        /// select the seed in a given house and sow them one by anti-clockwise till seeds finish
+        /// \param house the house to select from and start moving
+        /// \return  the vector of holes affected during the sow
+        std::vector<House> sow(House house) {
+            auto curSeed = getSeedsAt(house);
+            if (curSeed<=0 || !house.isValid()) { return {}; }
 
-            setSeedsAt(hole, 0);
-            std::vector<Hole> affectedHoles;
+            setSeedsAt(house, 0);
+            std::vector<House> affectedHoles;
             for (uint8_t n = 1; n <= curSeed; n++) {
-                hole++;
-                addSeedsAt(hole, 1);
-                affectedHoles.push_back(hole);
+                house++;
+                addSeedsAt(house, 1);
+                affectedHoles.push_back(house);
             }
             return affectedHoles;
         }
 
-        /// Get the seeds at given hole
-        /// \param hole
+        /// Get the seeds at given house
+        /// \param house
         /// \return
-        uint8_t getSeedsAt(const Hole &hole) {
-            return board[hole.getX()][hole.getY()];
+        uint8_t getSeedsAt(const House &house) {
+            return board[house.getX()][house.getY()];
         }
 
-        void setSeedsAt(const Hole &hole, const uint8_t val) {
-            board[hole.getX()][hole.getY()] = val;
+        void setSeedsAt(const House &house, const uint8_t val) {
+            board[house.getX()][house.getY()] = val;
         }
 
         void printBoard() const {

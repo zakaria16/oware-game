@@ -15,7 +15,7 @@ int main(int argc, char const *argv[]) {
         x = x - '0';
         y = y - '0';
         std::cout << "moving pt {" << (int) x << ":" << (int) y << "}\n";
-        oware.move({x, y});
+        oware.sow({x, y});
     }
 
     return 0;

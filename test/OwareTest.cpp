@@ -7,7 +7,7 @@
 namespace oware::test {
     namespace {
         using Oware = oware::Oware;
-        using Hole = oware::Hole;
+        using Hole = oware::House;
 
         class OwareTest : public ::testing::Test {
         protected:
@@ -48,8 +48,8 @@ namespace oware::test {
             const Oware::BoardType expectedResult{{{5, 0, 4, 4, 4, 4},
                                                    {5, 5, 5, 4, 4, 4}}};
 
-            auto affectedHoles = oware.move(hole2Move);
-            std::cout << "move: " << hole2Move << oware;
+            auto affectedHoles = oware.sow(hole2Move);
+            std::cout << "sow: " << hole2Move << oware;
 
             ASSERT_EQ(expectedAffectedHoles, affectedHoles);
 
@@ -67,8 +67,8 @@ namespace oware::test {
             const Oware::BoardType expectedResult{{{4, 5, 5, 5, 5, 0},
                                                    {4, 4, 4, 4, 4, 4}}};
 
-            auto affectedHoles = oware.move(hole2Move);
-            std::cout << "move: " << hole2Move << oware;
+            auto affectedHoles = oware.sow(hole2Move);
+            std::cout << "sow: " << hole2Move << oware;
 
             ASSERT_EQ(expectedAffectedHoles, affectedHoles);
 
@@ -86,8 +86,8 @@ namespace oware::test {
             const Oware::BoardType expectedResult{{{4, 4, 4, 4, 4, 4},
                                                    {0, 5, 5, 5, 5, 4}}};
 
-            auto affectedHoles = oware.move(hole2Move);
-            std::cout << "move: " << hole2Move << oware;
+            auto affectedHoles = oware.sow(hole2Move);
+            std::cout << "sow: " << hole2Move << oware;
 
             ASSERT_EQ(expectedAfectedHoles, affectedHoles);
 
@@ -104,8 +104,8 @@ namespace oware::test {
             const Oware::BoardType expectedResult{{{4, 4, 4, 5, 5, 5},
                                                    {4, 4, 4, 4, 0, 5}}};
 
-            auto affectedHoles = oware.move(hole2Move);
-            std::cout << "move: " << hole2Move << oware;
+            auto affectedHoles = oware.sow(hole2Move);
+            std::cout << "sow: " << hole2Move << oware;
 
             ASSERT_EQ(expectedAffectedHoles, affectedHoles);
 
@@ -122,29 +122,29 @@ namespace oware::test {
                                                        {0, 3}};
             const Oware::BoardType expectedResult{{{5, 5, 0, 5, 6, 6},
                                                    {5, 5, 4, 0, 1, 6}}};
-            //move 1
+            //sow 1
             Hole hole2Move{1, 4};
-            auto affectedHoles = oware.move(hole2Move);
+            auto affectedHoles = oware.sow(hole2Move);
             std::cout << "move1: " << hole2Move << oware;
             ASSERT_EQ(expectedAffectedHoles, affectedHoles);
 
-            //move 2
+            //sow 2
             hole2Move = {0, 2};
             expectedAffectedHoles = {{0, 1},
                                      {0, 0},
                                      {1, 0},
                                      {1, 1}};
-            affectedHoles = oware.move(hole2Move);
+            affectedHoles = oware.sow(hole2Move);
             std::cout << "move2: " << hole2Move << oware;
             ASSERT_EQ(expectedAffectedHoles, affectedHoles);
 
-            //move 3
+            //sow 3
             hole2Move = {1, 3};
             expectedAffectedHoles = {{1, 4},
                                      {1, 5},
                                      {0, 5},
                                      {0, 4}};
-            affectedHoles = oware.move(hole2Move);
+            affectedHoles = oware.sow(hole2Move);
             std::cout << "move2: " << hole2Move << oware;
             ASSERT_EQ(expectedAffectedHoles, affectedHoles);
 

@@ -2,11 +2,11 @@
 // Created by Zakaria on 14/12/2022.
 //
 
-#include "Hole.hpp"
+#include "House.hpp"
 
-using oware::Hole;
+using oware::House;
 
-Hole Hole::getHoleFromIndex(uint8_t index) {
+House House::getHoleFromIndex(uint8_t index) {
     if (index >= ROW_COUNT * COL_COUNT) {
         return {};
     }
@@ -17,6 +17,6 @@ Hole Hole::getHoleFromIndex(uint8_t index) {
     }
 }
 
-uint8_t Hole::getIndex() const {
+uint8_t House::getIndex() const {
     return y + x * COL_COUNT;
 }

@@ -5,6 +5,6 @@ project(Oware)
 include_directories(
         ${CMAKE_CURRENT_SOURCE_DIR}
 )
-add_executable(oware src/main.cpp src/Oware.cpp src/Hole.cpp src/Hole.hpp)
+add_executable(oware src/main.cpp src/Oware.cpp src/House.cpp src/House.hpp)
 
 add_subdirectory(test)
