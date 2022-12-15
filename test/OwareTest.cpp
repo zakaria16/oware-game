@@ -7,7 +7,7 @@
 namespace oware::test {
     namespace {
         using Oware = oware::Oware;
-        using Hole = oware::House;
+        using House = oware::House;
 
         class OwareTest : public ::testing::Test {
         protected:
@@ -39,114 +39,114 @@ namespace oware::test {
             ASSERT_NE(expectedResult, board);
         }
 
-        TEST_F(OwareTest, move01Test) {
-            Hole hole2Move{0, 1};
-            const std::vector<Hole> expectedAffectedHoles = {{0, 0},
-                                                             {1, 0},
-                                                             {1, 1},
-                                                             {1, 2}};
+        TEST_F(OwareTest, sow01Test) {
+            House house2Move{0, 1};
+            const std::vector<House> expectedAffectedHouses = {{0, 0},
+                                                              {1, 0},
+                                                              {1, 1},
+                                                              {1, 2}};
             const Oware::BoardType expectedResult{{{5, 0, 4, 4, 4, 4},
                                                    {5, 5, 5, 4, 4, 4}}};
 
-            auto affectedHoles = oware.sow(hole2Move);
-            std::cout << "sow: " << hole2Move << oware;
+            auto affectedHouses = oware.sow(house2Move);
+            std::cout << "sow: " << house2Move << oware;
 
-            ASSERT_EQ(expectedAffectedHoles, affectedHoles);
+            ASSERT_EQ(expectedAffectedHouses, affectedHouses);
 
             auto board = oware.getBoard();
 
             ASSERT_EQ(expectedResult, board);
         }
 
-        TEST_F(OwareTest, move05Test) {
-            Hole hole2Move{0, 5};
-            const std::vector<Hole> expectedAffectedHoles = {{0, 4},
-                                                             {0, 3},
-                                                             {0, 2},
-                                                             {0, 1}};
+        TEST_F(OwareTest,sow05Test) {
+            House house2Move{0, 5};
+            const std::vector<House> expectedAffectedHouses = {{0, 4},
+                                                              {0, 3},
+                                                              {0, 2},
+                                                              {0, 1}};
             const Oware::BoardType expectedResult{{{4, 5, 5, 5, 5, 0},
                                                    {4, 4, 4, 4, 4, 4}}};
 
-            auto affectedHoles = oware.sow(hole2Move);
-            std::cout << "sow: " << hole2Move << oware;
+            auto affectedHouses = oware.sow(house2Move);
+            std::cout << "sow: " << house2Move << oware;
 
-            ASSERT_EQ(expectedAffectedHoles, affectedHoles);
+            ASSERT_EQ(expectedAffectedHouses, affectedHouses);
 
             auto board = oware.getBoard();
 
             ASSERT_EQ(expectedResult, board);
         }
 
-        TEST_F(OwareTest, move10Test) {
-            const Hole hole2Move{1, 0};
-            const std::vector<Hole> expectedAfectedHoles = {{1, 1},
-                                                            {1, 2},
-                                                            {1, 3},
-                                                            {1, 4}};
+        TEST_F(OwareTest,sow10Test) {
+            const House house2Move{1, 0};
+            const std::vector<House> expectedAfectedHouses = {{1, 1},
+                                                             {1, 2},
+                                                             {1, 3},
+                                                             {1, 4}};
             const Oware::BoardType expectedResult{{{4, 4, 4, 4, 4, 4},
                                                    {0, 5, 5, 5, 5, 4}}};
 
-            auto affectedHoles = oware.sow(hole2Move);
-            std::cout << "sow: " << hole2Move << oware;
+            auto affectedHouses = oware.sow(house2Move);
+            std::cout << "sow: " << house2Move << oware;
 
-            ASSERT_EQ(expectedAfectedHoles, affectedHoles);
+            ASSERT_EQ(expectedAfectedHouses, affectedHouses);
 
             auto board = oware.getBoard();
             ASSERT_EQ(expectedResult, board);
         }
 
-        TEST_F(OwareTest, move14Test) {
-            Hole hole2Move{1, 4};
-            const std::vector<Hole> expectedAffectedHoles = {{1, 5},
-                                                             {0, 5},
-                                                             {0, 4},
-                                                             {0, 3}};
+        TEST_F(OwareTest, sow14Test) {
+            House house2Move{1, 4};
+            const std::vector<House> expectedAffectedHouses = {{1, 5},
+                                                              {0, 5},
+                                                              {0, 4},
+                                                              {0, 3}};
             const Oware::BoardType expectedResult{{{4, 4, 4, 5, 5, 5},
                                                    {4, 4, 4, 4, 0, 5}}};
 
-            auto affectedHoles = oware.sow(hole2Move);
-            std::cout << "sow: " << hole2Move << oware;
+            auto affectedHouses = oware.sow(house2Move);
+            std::cout << "sow: " << house2Move << oware;
 
-            ASSERT_EQ(expectedAffectedHoles, affectedHoles);
+            ASSERT_EQ(expectedAffectedHouses, affectedHouses);
 
             auto board = oware.getBoard();
 
             ASSERT_EQ(expectedResult, board);
         }
 
-        TEST_F(OwareTest, move14_02Test) {
+        TEST_F(OwareTest, sow14_02Test) {
 
-            std::vector<Hole> expectedAffectedHoles = {{1, 5},
-                                                       {0, 5},
-                                                       {0, 4},
-                                                       {0, 3}};
+            std::vector<House> expectedAffectedHouses = {{1, 5},
+                                                        {0, 5},
+                                                        {0, 4},
+                                                        {0, 3}};
             const Oware::BoardType expectedResult{{{5, 5, 0, 5, 6, 6},
                                                    {5, 5, 4, 0, 1, 6}}};
             //sow 1
-            Hole hole2Move{1, 4};
-            auto affectedHoles = oware.sow(hole2Move);
-            std::cout << "move1: " << hole2Move << oware;
-            ASSERT_EQ(expectedAffectedHoles, affectedHoles);
+            House house2Move{1, 4};
+            auto affectedHouses = oware.sow(house2Move);
+            std::cout << "sow1: " << house2Move << oware;
+            ASSERT_EQ(expectedAffectedHouses, affectedHouses);
 
             //sow 2
-            hole2Move = {0, 2};
-            expectedAffectedHoles = {{0, 1},
+            house2Move = {0, 2};
+            expectedAffectedHouses = {{0, 1},
                                      {0, 0},
                                      {1, 0},
                                      {1, 1}};
-            affectedHoles = oware.sow(hole2Move);
-            std::cout << "move2: " << hole2Move << oware;
-            ASSERT_EQ(expectedAffectedHoles, affectedHoles);
+            affectedHouses = oware.sow(house2Move);
+            std::cout << "sow2: " << house2Move << oware;
+            ASSERT_EQ(expectedAffectedHouses, affectedHouses);
 
             //sow 3
-            hole2Move = {1, 3};
-            expectedAffectedHoles = {{1, 4},
+            house2Move = {1, 3};
+            expectedAffectedHouses = {{1, 4},
                                      {1, 5},
                                      {0, 5},
                                      {0, 4}};
-            affectedHoles = oware.sow(hole2Move);
-            std::cout << "move2: " << hole2Move << oware;
-            ASSERT_EQ(expectedAffectedHoles, affectedHoles);
+            affectedHouses = oware.sow(house2Move);
+            std::cout << "sow2: " << house2Move << oware;
+            ASSERT_EQ(expectedAffectedHouses, affectedHouses);
 
             auto board = oware.getBoard();
 
