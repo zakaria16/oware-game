@@ -8,7 +8,7 @@ namespace oware::test {
     namespace {
         using Oware = oware::Oware;
         using House = oware::House;
-
+        using interface::BoardType ;
         class OwareTest : public ::testing::Test {
         protected:
             OwareTest() = default;
@@ -25,7 +25,7 @@ namespace oware::test {
 
         TEST_F(OwareTest, boardTest) {
             auto board = oware.getBoard();
-            Oware::BoardType expectedResult{{{4, 4, 4, 4, 4, 4},
+            BoardType expectedResult{{{4, 4, 4, 4, 4, 4},
                                              {4, 4, 4, 4, 4, 4}}};
 
             ASSERT_EQ(expectedResult, board);
@@ -33,7 +33,7 @@ namespace oware::test {
 
         TEST_F(OwareTest, wrongBoardTest) {
             auto board = oware.getBoard();
-            Oware::BoardType expectedResult{{{4, 1, 4, 4, 4, 4},
+            BoardType expectedResult{{{4, 1, 4, 4, 4, 4},
                                              {4, 4, 4, 3, 4, 4}}};
 
             ASSERT_NE(expectedResult, board);
@@ -45,7 +45,7 @@ namespace oware::test {
                                                               {1, 0},
                                                               {1, 1},
                                                               {1, 2}};
-            const Oware::BoardType expectedResult{{{5, 0, 4, 4, 4, 4},
+            const BoardType expectedResult{{{5, 0, 4, 4, 4, 4},
                                                    {5, 5, 5, 4, 4, 4}}};
 
             auto affectedHouses = oware.sow(house2Move);
@@ -64,7 +64,7 @@ namespace oware::test {
                                                               {0, 3},
                                                               {0, 2},
                                                               {0, 1}};
-            const Oware::BoardType expectedResult{{{4, 5, 5, 5, 5, 0},
+            const BoardType expectedResult{{{4, 5, 5, 5, 5, 0},
                                                    {4, 4, 4, 4, 4, 4}}};
 
             auto affectedHouses = oware.sow(house2Move);
@@ -83,7 +83,7 @@ namespace oware::test {
                                                              {1, 2},
                                                              {1, 3},
                                                              {1, 4}};
-            const Oware::BoardType expectedResult{{{4, 4, 4, 4, 4, 4},
+            const BoardType expectedResult{{{4, 4, 4, 4, 4, 4},
                                                    {0, 5, 5, 5, 5, 4}}};
 
             auto affectedHouses = oware.sow(house2Move);
@@ -101,7 +101,7 @@ namespace oware::test {
                                                               {0, 5},
                                                               {0, 4},
                                                               {0, 3}};
-            const Oware::BoardType expectedResult{{{4, 4, 4, 5, 5, 5},
+            const BoardType expectedResult{{{4, 4, 4, 5, 5, 5},
                                                    {4, 4, 4, 4, 0, 5}}};
 
             auto affectedHouses = oware.sow(house2Move);
@@ -120,7 +120,7 @@ namespace oware::test {
                                                         {0, 5},
                                                         {0, 4},
                                                         {0, 3}};
-            const Oware::BoardType expectedResult{{{5, 5, 0, 5, 6, 6},
+            const BoardType expectedResult{{{5, 5, 0, 5, 6, 6},
                                                    {5, 5, 4, 0, 1, 6}}};
             //sow 1
             House house2Move{1, 4};
@@ -151,6 +151,70 @@ namespace oware::test {
             auto board = oware.getBoard();
 
             ASSERT_EQ(expectedResult, board);
+        }
+
+        TEST_F(OwareTest, sowOverSelectedTest) {
+            House house2Move{1, 4};
+            oware.setSeedsAt(house2Move,14);
+
+            const BoardType expectedResult{{{5, 5, 5, 5, 6, 6},
+                                                   {5, 5, 5, 5, 0, 6}}};
+
+            auto affectedHouses = oware.sow(house2Move);
+            std::cout << "sow: " << house2Move << oware;
+
+            auto board = oware.getBoard();
+
+            ASSERT_EQ(expectedResult, board);
+        }
+
+        TEST_F(OwareTest, wontest) {
+            auto seed2Fill = 3;
+            std::vector<House> affectedHouses = {{0, 5},
+                                                        {0, 4},
+                                                        {0, 3},
+                                                        {0, 2}};
+            for(const auto &house: affectedHouses) {
+                oware.setSeedsAt(house, seed2Fill);
+            }
+
+            std::cout << oware;
+            auto wonSeeds = oware.wonSeeds(Player{Player::ID::PLAYER_B},affectedHouses);
+            ASSERT_EQ(affectedHouses.size()*seed2Fill, wonSeeds.first);
+        }
+
+        TEST_F(OwareTest, won2test) {
+            auto seed2Fill = 3;
+            std::vector<House> affectedHouses = {{0, 5},
+                                                 {0, 4},
+                                                 {0, 3},
+                                                 {0, 2}};
+            for(const auto &house: affectedHouses) {
+                oware.setSeedsAt(house, seed2Fill);
+            }
+
+            oware.setSeedsAt(affectedHouses[1],4);
+
+            std::cout << oware;
+            Player player{Player::ID::PLAYER_B};
+            auto wonSeeds = oware.wonSeeds(player,affectedHouses);
+            ASSERT_EQ(6, wonSeeds.first);
+        }
+        TEST_F(OwareTest, wonSeedFailedHeadTest) {
+            auto seed2Fill = 3;
+            std::vector<House> affectedHouses = {{0, 5},
+                                                 {0, 4},
+                                                 {0, 3},
+                                                 {0, 2}};
+            for(const auto &house: affectedHouses) {
+                oware.setSeedsAt(house, seed2Fill);
+            }
+
+            oware.setSeedsAt(affectedHouses[3],1);
+
+            std::cout << oware;
+            auto wonSeeds = oware.wonSeeds(Player{Player::ID::PLAYER_B},affectedHouses);
+            ASSERT_EQ(0, wonSeeds.first);
         }
 
     }// namespace
