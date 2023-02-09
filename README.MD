@@ -1,4 +1,7 @@
 # Oware Game
+
+[![Build and Run Test](https://github.com/zakaria16/oware-game/actions/workflows/cmake.yml/badge.svg)](https://github.com/zakaria16/oware-game/actions/workflows/cmake.yml)
+
 Implementation of [Oware game](https://en.wikipedia.org/wiki/Oware) in c++
 
 Fully implemented [Abapa](http://www.oware.org/abapa.asp) version of oware
