@@ -9,6 +9,7 @@ Fully implemented [Abapa](http://www.oware.org/abapa.asp) version of oware
 
 To add a different game with it set of rules extend `OwareAbstractClass` and implement the virtual methods.
 After that, you can load your version of the game like this
+
 ```c++
   oware::Game game{std::make_unique<YourDerivedClass>()};
   game.start("player1", "player2");
@@ -17,6 +18,7 @@ After that, you can load your version of the game like this
 - See `Oware` class for the Aba ba implementation in [Oware.hpp](./src/Oware.hpp) and [Oware.cpp](./src/Oware.hpp)
 - See  [main.cpp](./src/main.cpp) for console example of oware game
   to add a new gm
+
 # Build
 
 ```shell
@@ -27,7 +29,9 @@ After that, you can load your version of the game like this
 ```
 
 ## test
+
 to run the tests
+
 ```c++
  mkdir build
   cd build

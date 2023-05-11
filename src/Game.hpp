@@ -14,47 +14,47 @@
 
 namespace oware {
 
-    class Game {
-        using OwareInterface = interface::OwareInterface;
+class Game {
+    using OwareInterface = interface::OwareInterface;
 
-    public:
-        explicit Game(std::unique_ptr<OwareInterface> owareGame);
+public:
+    explicit Game(std::unique_ptr<OwareInterface> owareGame);
 
-        void start(const std::string &player1Name, const std::string &player2Name);
+    void start(const std::string &player1Name, const std::string &player2Name);
 
-        void start();
+    void start();
 
-        bool sow(House house);
+    bool sow(House house);
 
-        /// check the winner of the Game
-        ///
-        /// A player has won he has more than half of the total seeds
-        /// which is 24
-        /// \return the player who has won
-        Player checkWinner();
+    /// check the winner of the Game
+    ///
+    /// A player has won he has more than half of the total seeds
+    /// which is 24
+    /// \return the player who has won
+    Player checkWinner();
 
-        /// can the game be stopped
-        /// A game can be stopped if a player has more than 24 seeds
-        /// \return true if it can be stop, false otherwise
-        bool canEndGame();
+    /// can the game be stopped
+    /// A game can be stopped if a player has more than 24 seeds
+    /// \return true if it can be stop, false otherwise
+    bool canEndGame();
 
-        /// whic player is next to play
-        /// \return the player
-        Player whoIsNext();
+    /// whic player is next to play
+    /// \return the player
+    Player whoIsNext();
 
-        /// Display the board
-        /// \return the string representation of the board
-        std::string display();
+    /// Display the board
+    /// \return the string representation of the board
+    std::string display();
 
-    private:
-        /// toggle the player
-        /// \return the next player
-        Player switchPlayerTurn();
-        std::unique_ptr<OwareInterface> oware;
-        Player player1;
-        Player player2;
-        Player *currentPlayer{&player1};
-    };
+private:
+    /// toggle the player
+    /// \return the next player
+    Player switchPlayerTurn();
+    std::unique_ptr<OwareInterface> oware;
+    Player player1;
+    Player player2;
+    Player *currentPlayer{&player1};
+};
 
 }// namespace oware
 
