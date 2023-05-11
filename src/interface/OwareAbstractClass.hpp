@@ -4,15 +4,13 @@
 
 #ifndef OWARE_OWAREABSTRACTCLASS_HPP
 #define OWARE_OWAREABSTRACTCLASS_HPP
-//
-// Created by Zakaria on 24/12/2022.
-//
+
+#include <array>
+#include <vector>
 
 #include "Oware.hpp"
 #include "model/House.hpp"
 #include "model/Player.hpp"
-#include <array>
-#include <vector>
 
 namespace oware::interface {
 

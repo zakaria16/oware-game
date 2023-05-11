@@ -5,11 +5,11 @@
 #ifndef OWARE_OWAREINTERFACE_HPP
 #define OWARE_OWAREINTERFACE_HPP
 
-#include "Oware.hpp"
-#include "model/House.hpp"
-#include "model/Player.hpp"
 #include <array>
 #include <vector>
+
+#include "model/House.hpp"
+#include "model/Player.hpp"
 
 namespace oware::interface {
 

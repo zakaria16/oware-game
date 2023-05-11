@@ -8,6 +8,7 @@
 #include <cstdint>
 #include <ostream>
 #include <string>
+
 namespace oware {
     class Player {
     public:
