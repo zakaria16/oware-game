@@ -49,12 +49,14 @@ oware::Oware::BoardType oware::Oware::getBoard() {
 std::pair<uint8_t, std::vector<oware::House>> oware::Oware::wonSeeds(const Player &player, const std::vector<House> &affectedHouses) {
     uint8_t sum = 0;
     std::vector<House> wonHouses;
+    ///  11/05/2023 checking i>=0 will not work, i is unsigned
     for (auto i = affectedHouses.size() - 1; true; --i) {
         auto seeds = getSeedsAt(affectedHouses[i]);
         if (player != affectedHouses[i].getX() && seeds > 1 && seeds < 4) {
             sum += seeds;
             setSeedsAt(affectedHouses[i], 0);
             wonHouses.push_back(affectedHouses[i]);
+            if(i==0) break ;
         } else {
             break;
         }
