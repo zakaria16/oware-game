@@ -21,9 +21,9 @@ public:
     House() = default;
 
     /// Create a hole object
-    /// \param x the row number
-    /// \param y the column number
-    House(uint8_t x, uint8_t y) : x(x), y(y) {}
+    /// \param row the row number
+    /// \param col the column number
+    House(uint8_t row, uint8_t col) : row(row), col(col) {}
 
     /// Get the index of the hole
     /// \return the index
@@ -40,14 +40,14 @@ public:
     /// \return
     friend std::ostream &operator<<(std::ostream &os, const House &hole)
     {
-        os << "{" << static_cast<int>(hole.x) << "," << static_cast<int>(hole.y) << "}";
+        os << "{" << static_cast<int>(hole.row) << "," << static_cast<int>(hole.col) << "}";
         return os;
     }
 
     bool operator==(const House &rhs) const
     {
-        return x == rhs.x &&
-               y == rhs.y;
+        return row == rhs.row &&
+               col == rhs.col;
     }
 
     bool operator!=(const House &rhs) const
@@ -57,17 +57,17 @@ public:
 
     [[nodiscard]] bool isValid() const
     {
-        return x >= 0 && y >= 0 && x < ROW_COUNT && y < COL_COUNT;
+        return row >= 0 && col >= 0 && row < ROW_COUNT && col < COL_COUNT;
     }
 
-    [[nodiscard]] uint8_t getX() const
+    [[nodiscard]] uint8_t getRow() const
     {
-        return x;
+        return row;
     }
 
-    [[nodiscard]] uint8_t getY() const
+    [[nodiscard]] uint8_t getCol() const
     {
-        return y;
+        return col;
     }
 
     House operator++(int)
@@ -81,24 +81,24 @@ public:
         const auto nextIndex = getIndex();
         if (nextIndex == 0)
         {
-            x = 1;
-            y = 0;
+            row = 1;
+            col = 0;
         }
         else if (nextIndex == (ROW_COUNT * COL_COUNT - 1))
         {
-            x = 0;
-            y = 5;
+            row = 0;
+            col = 5;
         }
         else
         {
-            y = (x == 1) ? y + 1 : y - 1;
+            col = (row == 1) ? col + 1 : col - 1;
         }
         return *this;
     }
 
 private:
-    uint8_t x = -1;
-    uint8_t y = -1;
+    uint8_t row = -1;
+    uint8_t col = -1;
 };
 }// namespace oware
 

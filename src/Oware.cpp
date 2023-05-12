@@ -1,7 +1,7 @@
 #include "Oware.hpp"
 void oware::Oware::addSeedsAt(const oware::House &house, const int val)
 {
-    auto &seed = board[house.getX()][house.getY()];
+    auto &seed = board[house.getRow()][house.getCol()];
     seed += val;
 }
 std::vector<oware::House> oware::Oware::sow(const oware::House &selectedHouse)
@@ -27,11 +27,11 @@ std::vector<oware::House> oware::Oware::sow(const oware::House &selectedHouse)
 }
 uint8_t oware::Oware::getSeedsAt(const oware::House &house)
 {
-    return board[house.getX()][house.getY()];
+    return board[house.getRow()][house.getCol()];
 }
 void oware::Oware::setSeedsAt(const oware::House &house, const uint8_t val)
 {
-    board[house.getX()][house.getY()] = val;
+    board[house.getRow()][house.getCol()] = val;
 }
 void oware::Oware::printBoard() const
 {
@@ -65,7 +65,7 @@ std::pair<uint8_t, std::vector<oware::House>> oware::Oware::wonSeeds(const Playe
     for (auto i = affectedHouses.size() - 1; true; --i)
     {
         auto seeds = getSeedsAt(affectedHouses[i]);
-        if (player != affectedHouses[i].getX() && seeds > 1 && seeds < 4)
+        if (player != affectedHouses[i].getRow() && seeds > 1 && seeds < 4)
         {
             sum += seeds;
             setSeedsAt(affectedHouses[i], 0);

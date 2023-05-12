@@ -33,10 +33,10 @@ oware::interface::BoardType OwareAbstractClass::getBoard()
 
 uint8_t OwareAbstractClass::getSeedsAt(const oware::House &house)
 {
-    return board[house.getX()][house.getY()];
+    return board[house.getRow()][house.getCol()];
 }
 
 void OwareAbstractClass::setSeedsAt(const oware::House &house, const uint8_t val)
 {
-    board[house.getX()][house.getY()] = val;
+    board[house.getRow()][house.getCol()] = val;
 }

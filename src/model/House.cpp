@@ -24,5 +24,5 @@ House House::getHoleFromIndex(uint8_t index)
 
 uint8_t House::getIndex() const
 {
-    return y + x * COL_COUNT;
+    return col + row * COL_COUNT;
 }

@@ -25,7 +25,7 @@ void Game::start()
 
 bool Game::sow(const House& house)
 {
-    if ((uint8_t) currentPlayer->getId() != house.getX())
+    if ((uint8_t) currentPlayer->getId() != house.getRow())
     {
         return false;
     }
