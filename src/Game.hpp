@@ -24,7 +24,7 @@ public:
 
     void start();
 
-    bool sow(House house);
+    bool sow(const House& house);
 
     /// check the winner of the Game
     ///
