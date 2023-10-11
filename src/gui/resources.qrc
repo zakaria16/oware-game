@@ -1,0 +1,6 @@
+<RCC>
+  <qresource>
+    <file>images/seed.png</file>
+  </qresource>
+  <qresource prefix="house"/>
+</RCC>

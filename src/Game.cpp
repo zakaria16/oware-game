@@ -23,7 +23,7 @@ void Game::start()
     oware->printBoard();
 }
 
-bool Game::sow(const House& house)
+bool Game::sow(const House &house)
 {
     if ((uint8_t) currentPlayer->getId() != house.getRow())
     {

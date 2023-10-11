@@ -95,6 +95,7 @@ public:
         }
         return *this;
     }
+    virtual ~House() = default;
 
 private:
     uint8_t row = -1;

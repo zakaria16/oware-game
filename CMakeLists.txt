@@ -13,4 +13,6 @@ add_executable(oware src/main.cpp
         src/interface/OwareAbstractClass.cpp
         )
 
+add_subdirectory(src/gui)
+
 add_subdirectory(test)
